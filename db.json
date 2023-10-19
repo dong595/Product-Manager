@@ -1,0 +1,10 @@
+{
+  "users": [
+    {
+      "email": "abc@fpt.edu.vn",
+      "password": "$2a$10$dQBSEbTxgGWY3oNOoTbws.UK3hQmcWiMGvob3t1mL1z3tCNVHLDhG",
+      "role": 2,
+      "id": 1
+    }
+  ]
+}

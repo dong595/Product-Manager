@@ -1,0 +1,123 @@
+<body>
+  <main class="flex flex-col items-center mt-24">
+    <form
+      [formGroup]="formSignin"
+      (ngSubmit)="onSubmit()"
+      class="flex flex-col gap-4"
+    >
+      <div class="grid grid-cols-2">
+        <div>
+          <h1
+            class="h3 mb-3 fw-normal bg-aqua-500 py-1 px-2 rounded"
+            routerLink="/user/signup"
+          >
+            Sign Up
+          </h1>
+        </div>
+        <div>
+          <h1 class="h3 mb-3 fw-normal" routerLink="/user/signin">Sign in</h1>
+        </div>
+      </div>
+      <div class="relative mb-4">
+        <input
+          type="email"
+          class="block w-full bg-white border border-gray-300 rounded-md px-4 py-2"
+          id="email"
+          placeholder="name@example.com"
+          formControlName="email"
+        />
+        <div
+          class="error"
+          *ngIf="
+            formSignin.get('email')?.hasError('required') &&
+            (formSignin.get('email')?.touched || formSignin.get('email')?.dirty)
+          "
+        >
+          <span class="text-red-500">Email is required</span>
+        </div>
+        <div
+          class="error"
+          *ngIf="
+            formSignin.get('email')?.hasError('email') &&
+            (formSignin.get('email')?.touched || formSignin.get('email')?.dirty)
+          "
+        >
+          <span class="text-red-500">Invalid email format</span>
+        </div>
+        <label for="email">Email address</label>
+      </div>
+
+      <div class="relative mb-4">
+        <input
+          type="password"
+          class="block w-full bg-white border border-gray-300 rounded-md px-4 py-2"
+          id="password"
+          placeholder="Password"
+          formControlName="password"
+        />
+        <div
+          class="error"
+          *ngIf="
+            formSignin.get('password')?.hasError('required') &&
+            (formSignin.get('password')?.touched ||
+              formSignin.get('password')?.dirty)
+          "
+        >
+          <span class="text-red-500">Password is required</span>
+        </div>
+        <div
+          class="error"
+          *ngIf="
+            formSignin.get('password')?.hasError('minlength') &&
+            (formSignin.get('password')?.touched ||
+              formSignin.get('password')?.dirty)
+          "
+        >
+          <span class="text-red-500"
+            >Password must be at least 6 characters long</span
+          >
+        </div>
+        <label for="password">Password</label>
+      </div>
+
+      <div class="relative mb-4">
+        <input
+          type="password"
+          class="block w-full bg-white border border-gray-300 rounded-md px-4 py-2"
+          id="confirmPassword"
+          placeholder="Confirm Password"
+          formControlName="confirmPassword"
+        />
+        <div
+          class="error"
+          *ngIf="
+            formSignin.get('confirmPassword')?.hasError('required') &&
+            (formSignin.get('confirmPassword')?.touched ||
+              formSignin.get('confirmPassword')?.dirty)
+          "
+        >
+          <span class="text-red-500">Confirm Password is required</span>
+        </div>
+        <div
+          class="error"
+          *ngIf="
+            formSignin.hasError('notMatch') &&
+            (formSignin.get('confirmPassword')?.touched ||
+              formSignin.get('confirmPassword')?.dirty)
+          "
+        >
+          Passwords do not match
+        </div>
+        <label for="confirmPassword">Confirm Password</label>
+      </div>
+
+      <button
+        class="btn btn-primary py-2 px-4 w-full"
+        type="submit"
+        [disabled]="formSignin.invalid"
+      >
+        Sign Up
+      </button>
+    </form>
+  </main>
+</body>

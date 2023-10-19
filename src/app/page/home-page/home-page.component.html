@@ -1,0 +1,44 @@
+<article class="bg-white text-[#333] mt-24">
+  <div class="container mx-auto pt-10">
+    <app-banner />
+    <div class="title">
+      <h1 class="text-3xl">Flash Sale !</h1>
+      <!-- <input type="text" [(ngModel)]="textSearch" class="border" /> -->
+
+      <div class="line w-full border-b-4 border-[#333]"></div>
+    </div>
+    <div
+      class="content pt-10 grid xl:grid-cols-4 grid-rows-1 md:grid-cols-2 sm:grid-cols-1 gap-10"
+    >
+      <div
+        class="relative group"
+        *ngFor="let product of products | searchBox : textSearch"
+      >
+        <a href="/detail/{{ product.id }}" (click)="editProduct(product)">
+          <div
+            class="item hover:bg-gray-700 hover:text-white rounded shadow-md px-6 h-full w-full flex flex-col items-center justify-center"
+          >
+            <h3 class="text-2xl py-10 truncate w-64">
+              {{ product.name }}
+            </h3>
+            <img
+              src="{{ product.imageUrl }}"
+              class="w-64 py-10 mx-auto rounded"
+              alt=""
+            />
+            <p class="py-10 text-xl text-[red] font-bold">
+              $ {{ product.price }}
+            </p>
+          </div>
+        </a>
+
+        <div
+          class="bg-gray-800 text-white p-4 rounded-r-lg absolute top-0 right-0 transform translate-x-full transition duration-300 ease-in-out opacity-0 group-hover:opacity-100"
+        >
+          <p><fa-icon [icon]="faShoppingCart"></fa-icon></p>
+        </div>
+      </div>
+    </div>
+    <!-- <app-product-detail [product]="product" (onRemove)="onRemove($event)" /> -->
+  </div>
+</article>

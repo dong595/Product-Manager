@@ -1,0 +1,8 @@
+.slideshow-container {
+  position: relative;
+  height: 400px; /* Thay đổi chiều cao slideshow tùy ý */
+}
+
+.hidden {
+  display: none;
+}

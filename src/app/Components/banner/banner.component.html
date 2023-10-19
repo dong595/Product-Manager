@@ -1,0 +1,12 @@
+<div class="slideshow-container">
+  <div
+    *ngFor="let slide of slides; let i = index"
+    [ngClass]="{ hidden: currentIndex !== i }"
+  >
+    <img
+      [src]="slide.imageUrl"
+      [alt]="slide.caption"
+      class="object-cover w-full h-96 rounded"
+    />
+  </div>
+</div>
